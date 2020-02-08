@@ -46,9 +46,9 @@ func copyAndCapture(w io.Writer, r io.Reader, input io.Writer) ([]byte, error) {
 func main() {
 
 	var cmd = NewCmder("simple.exe", "")
-	cmd.Run(func(words string) {
+	cmd.Run(func(self* Cmder, words string) {
 		if words == "enter a word..." {
-			cmd.Write([]byte("123\n"))
+			self.Write([]byte("123"))
 		}
 	})
 	fmt.Println(string(cmd.outBuffer.Bytes()))
